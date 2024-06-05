@@ -15,11 +15,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
@@ -73,7 +71,7 @@ public class EmailAutomatizado {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse("joseluislealgarcia03@gmail.com"));
+                    InternetAddress.parse(destinatario));
             message.setSubject(asunto);
             message.setText(texto);
 
@@ -85,7 +83,7 @@ public class EmailAutomatizado {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-        return "<h1>Hola</h1>";
+        return "<h1></h1>";
     }
 
 }
